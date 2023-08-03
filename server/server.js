@@ -19,7 +19,7 @@ app.use('/buildDecks', deckConceptRouter);
 
 // Axios request for YGOProDeck API
 app.post('/search', (req, res) => {
-  axios.get(`https://db.ygoprodeck.com/api/v7/cardinfo.php?${req.body.data}`)
+  axios.get(`https://db.ygoprodeck.com/api/v7/cardinfo.php?fname=${req.body.value}`)
   .then(response => {
     res.send(response.data);
   }).catch((error) => {
