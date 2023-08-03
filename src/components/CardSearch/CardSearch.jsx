@@ -5,6 +5,7 @@ import axios from 'axios';
 
 function CardSearch() {
   const dispatch = useDispatch();
+  const searchData = useSelector(store => store.searchData);
   const [searchInput, setSearchInput] = useState('test');
   
   const handleSearchChange = (event) => {
@@ -19,6 +20,7 @@ function CardSearch() {
       value: searchInput
     }).then(response => {
       console.log(`response OK: ${response.data}`);
+      dispatch({type: 'SET_SEARCH_DATA', payload: response.data.data})
     }).catch((error) => {
       console.log(`Error in CardSearch POST: ${error}`);
       alert('Something is wrong, Mr. ggKaiba');
@@ -32,7 +34,7 @@ function CardSearch() {
         <input className="searchBar" type="text" onChange={event => handleSearchChange(event)}/>
         <input type="submit"/>
       </form>
-      
+      {JSON.stringify(searchData)}
     </div>
   )
 }

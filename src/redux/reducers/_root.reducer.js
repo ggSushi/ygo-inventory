@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
 
-const testReducer = (state = 'ggKaiba', action) => {
+const searchData = (state = {}, action) => {
   switch (action.type) {
-    case 'SET_TEST_NAME':
+    case 'SET_SEARCH_DATA':
       return action.payload;
     default:
       return state;
@@ -14,7 +14,7 @@ const rootReducer = combineReducers({
   // If there are no existing reducers, console log 
   // will show error that states there are no 
   // reducers in store.
-  testReducer,
+  searchData,
 });
 
 export default rootReducer;
