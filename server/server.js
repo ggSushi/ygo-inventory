@@ -17,6 +17,17 @@ app.use('/inventory', inventoryRouter);
 app.use('/myDecks', deckCurrentRouter);
 app.use('/buildDecks', deckConceptRouter);
 
+// Axios request for YGOProDeck API
+app.post('/search', (req, res) => {
+  axios.get(`https://db.ygoprodeck.com/api/v7/cardinfo.php?${req.body.data}`)
+  .then(response => {
+    res.send(response.data);
+  }).catch((error) => {
+    console.log(`Error in YGOProDeck Request: ${error}`);
+    res.sendStatus(500);
+  })
+});
+
 app.use(express.static('public'));
 app.listen(PORT, () => {
   console.log(`listening on port: ${PORT}`)
