@@ -35,6 +35,7 @@ function CardSearch() {
         <input type="submit"/>
       </form>
       {JSON.stringify(searchData)}
+      
     </div>
   )
 }

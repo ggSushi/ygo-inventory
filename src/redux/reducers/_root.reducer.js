@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 
-const searchData = (state = {}, action) => {
+const searchData = (state = [], action) => {
   switch (action.type) {
     case 'SET_SEARCH_DATA':
       return action.payload;
