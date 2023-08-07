@@ -12,7 +12,6 @@ function CardSearch() {
 
   const handleSearchChange = (event) => {
     setSearchInput(event.target.value);
-    console.log(searchInput);
   }
 
   const handleCardClick = (card) => {
