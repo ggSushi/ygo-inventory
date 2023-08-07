@@ -16,11 +16,11 @@ function CardItem({ card }) {
       setCardColor('#7972AE');
       setTextColor('white');
     } else if (card.type === 'Synchro Monster') {
-      setCardColor('#E7E4DF');
+      setCardColor('white');
     } else if (card.type === 'Ritual Effect Monster' || card.type === 'Ritual Monster') {
       setCardColor('#8AA2CB');
       setTextColor('white');
-    } else if (card.type === 'Link Monster') {
+    } else if (card.type === 'Link Monster' || card.type === 'Skill Card') {
       setCardColor('#1A4687');
       setTextColor('white');
     } else if (card.type === 'XYZ Monster') {
@@ -42,8 +42,6 @@ function CardItem({ card }) {
   }
 
   useEffect(() => {
-    setCardColor('');
-    setTextColor('black')
     colorChange();
   }, [])
 

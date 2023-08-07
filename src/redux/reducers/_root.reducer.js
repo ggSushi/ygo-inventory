@@ -11,6 +11,7 @@ const searchData = (state = [], action) => {
   }
 }
 
+
 const rootReducer = combineReducers({
   //* reducers go here.
   // If there are no existing reducers, console log 

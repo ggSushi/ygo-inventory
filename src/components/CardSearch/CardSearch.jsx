@@ -49,7 +49,7 @@ function CardSearch() {
       <h3>Search Results for: {searchDisplay}</h3>
       {
         searchData.map(card => (
-          <div>
+          <div key={card.id}>
             <CardItem
               card={card}
             />
