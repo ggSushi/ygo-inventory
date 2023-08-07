@@ -2,11 +2,13 @@ import React from 'react';
 import {useState, useEffect} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import axios from 'axios';
+import CardItem from './CardItem.jsx';
 
 function CardSearch() {
   const dispatch = useDispatch();
   const searchData = useSelector(store => store.searchData);
-  const [searchInput, setSearchInput] = useState('test');
+  const [searchInput, setSearchInput] = useState('');
+  const [searchDisplay, setSearchDisplay] = useState('')
   
   const handleSearchChange = (event) => {
     setSearchInput(event.target.value);
@@ -15,6 +17,10 @@ function CardSearch() {
   
   const handleFormSubmit = (e) => {
     e.preventDefault();
+    
+    setSearchDisplay('');
+    setSearchDisplay(searchInput);
+
     // Axios request
     axios.post(`/search`, {
       value: searchInput
@@ -24,7 +30,7 @@ function CardSearch() {
     }).catch((error) => {
       console.log(`Error in CardSearch POST: ${error}`);
       alert('Something is wrong, Mr. ggKaiba');
-    })
+    });
   }
   
   return (
@@ -34,7 +40,15 @@ function CardSearch() {
         <input className="searchBar" type="text" onChange={event => handleSearchChange(event)}/>
         <input type="submit"/>
       </form>
-      {JSON.stringify(searchData)}
+      <h3>Search Results for: {searchDisplay}</h3>
+      {
+        searchData.map(card => (
+          <div>
+            <CardItem card={card} />
+          </div>
+        ))
+      }
+      
       
     </div>
   )
