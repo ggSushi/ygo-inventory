@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
@@ -10,6 +10,7 @@ function CardInfoPage() {
   const backToSearch = () => {
     history.push('/home')
   }
+
   return (
     <div>
       <h2>{cardInfo.name}</h2>
@@ -22,10 +23,23 @@ function CardInfoPage() {
         </div>
         <div>
           <p>
-            Description:
+            <b>Description:</b>
             <br />
             {cardInfo.desc}
           </p>
+
+          {
+            cardInfo.type === 'Spell Card' || cardInfo.type === 'Trap Card' || cardInfo.type === 'Skill Card' ? (
+              <div></div>
+            ) : (
+              <div>
+                <b>ATK:</b> {cardInfo.atk}
+                <b>DEF:</b> {cardInfo.def}
+              </div>
+
+            )
+          }
+
 
         </div>
       </div>
