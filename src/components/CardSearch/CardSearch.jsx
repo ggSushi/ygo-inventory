@@ -72,11 +72,6 @@ function CardSearch() {
           }
         </Grid>
       </Box>
-
-
-
-
-
     </div>
   )
 }

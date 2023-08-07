@@ -3,8 +3,10 @@ import { useState, useEffect } from 'react';
 import './CardStyle.css';
 
 function CardItem({ card }) {
-  const [cardColor, setCardColor] = useState('');
+  const [cardColor, setCardColor] = useState('transparent');
   const [textColor, setTextColor] = useState('black');
+  const [gradientFromColor, setGradientFromColor] = useState('transparent');
+  const [gradientToColor, setGradientToColor] = useState('transparent');
 
   const colorChange = () => {
     if (card.type === 'Normal Monster' || card.type === 'Gemini Monster') {
@@ -15,19 +17,16 @@ function CardItem({ card }) {
     } else if (card.type === 'Fusion Monster') {
       setCardColor('#7972AE');
       setTextColor('white');
-    } else if (card.type === 'Synchro Pendulum Effect Monster' || card.type === 'Synchro Monster') {
+    } else if (card.type === 'Synchro Monster') {
       setCardColor('white');
     } else if (card.type === 'Ritual Effect Monster' || card.type === 'Ritual Monster') {
-      setCardColor('#8AA2CB');
+      setCardColor('#0C28C0');
       setTextColor('white');
     } else if (card.type === 'Link Monster' || card.type === 'Skill Card') {
-      setCardColor('#1A4687');
+      setCardColor('#0B63F6');
       setTextColor('white');
-    } else if (card.type === 'XYZ Pendulum Effect Monster' || card.type === 'XYZ Monster') {
+    } else if (card.type === 'XYZ Monster') {
       setCardColor('#292D2D');
-      setTextColor('white');
-    } else if (card.type === 'Pendulum Tuner Effect Monster' ||card.type === 'Pendulum Monster' || card.type === 'Pendulum Normal Monster' || card.type === 'Pendulum Effect Ritual Monster' || card.type === 'Pendulum Effect Monster') {
-      setCardColor('#95A299');
       setTextColor('white');
     } else if (card.type === 'Spell Card') {
       setCardColor('#208685');
@@ -38,9 +37,35 @@ function CardItem({ card }) {
     } else if (card.type === 'Token') {
       setCardColor('#746B78');
       setTextColor('white');
+    } else if (card.type === 'Pendulum Monster' || card.type === 'Pendulum Normal Monster' || card.type === 'Pendulum Effect Monster' || card.type === 'Pendulum Tuner Effect Monster') {
+      setTextColor('white');
+      setGradientFromColor('#B9855D');
+      setGradientToColor('#208685');
+    } else if (card.type === 'Pendulum Fusion Monster') {
+      setTextColor('white');
+      setGradientFromColor('');
+      setGradientToColor('#208685');
+    } else if (card.type === 'XYZ Pendulum Effect Monster') {
+      setTextColor('white');
+      setGradientFromColor('#292D2D');
+      setGradientToColor('#208685');
+    } else if (card.type === 'Pendulum Effect Ritual Monster') {
+      setTextColor('white');
+      setGradientFromColor('#0C28C0');
+      setGradientToColor('#208685');
+    } else if (card.type === 'Synchro Pendulum Effect Monster' ) {
+      setTextColor('black');
+      setGradientFromColor('white');
+      setGradientToColor('#208685');
+    } else if (card.type === 'Pendulum Effect Fusion Monster' ) {
+      setTextColor('white');
+      setGradientFromColor('#7972AE');
+      setGradientToColor('#208685');
     } else {
       setCardColor('transparent');
       setTextColor('black');
+      setGradientFromColor('transparent');
+      setGradientToColor('transparent');
     }
   }
 
@@ -49,7 +74,10 @@ function CardItem({ card }) {
   }, [])
 
   return (
-    <div id="card-item" style={{ backgroundColor: cardColor, color: textColor}}>
+    <div id="card-item" 
+    style={{ backgroundColor: cardColor, 
+    color: textColor, 
+    backgroundImage: `linear-gradient(0deg, ${gradientToColor}, ${gradientFromColor})`}}>
       <h3><center>{card.name}</center></h3>
       <ul>
         <li><b>Type:</b> <i>{card.type}</i></li>
