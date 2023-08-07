@@ -3,34 +3,52 @@ import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 function CardItem({ card }) {
-  const [cardColor, setCardColor] = useState('#FFE09E')
+  const [cardColor, setCardColor] = useState('');
+  const [textColor, setTextColor] = useState('black');
 
-  useEffect(() => {
+  const colorChange = () => {
     if (card.type === 'Normal Monster') {
       setCardColor('#FFE09E');
+    } else if (card.type === 'Toon Monster' || card.type === 'Effect Monster') {
+      setCardColor('#B9855D');
+      setTextColor('white');
     } else if (card.type === 'Fusion Monster') {
       setCardColor('#7972AE');
+      setTextColor('white');
     } else if (card.type === 'Synchro Monster') {
       setCardColor('#E7E4DF');
-    } else if (card.type === 'Ritual Monster') {
-      setCardColor('#8AA2CB')
+    } else if (card.type === 'Ritual Effect Monster' || card.type === 'Ritual Monster') {
+      setCardColor('#8AA2CB');
+      setTextColor('white');
     } else if (card.type === 'Link Monster') {
-      setCardColor('#1A4687')
-    } else if (card.type === 'Xyz Monster') {
-      setCardColor('#292D2D')
+      setCardColor('#1A4687');
+      setTextColor('white');
+    } else if (card.type === 'XYZ Monster') {
+      setCardColor('#292D2D');
+      setTextColor('white');
     } else if (card.type === 'Pendulum Monster') {
-      setCardColor('#95A299')
+      setCardColor('#95A299');
+      setTextColor('white');
     } else if (card.type === 'Spell Card') {
-      setCardColor('#208685')
+      setCardColor('#208685');
+      setTextColor('white');
     } else if (card.type === 'Trap Card') {
-      setCardColor('#D187A8')
+      setCardColor('#D187A8');
+      setTextColor('white');
     } else {
-      setCardColor('transparent')
+      setCardColor('transparent');
+      setTextColor('black');
     }
+  }
+
+  useEffect(() => {
+    setCardColor('');
+    setTextColor('black')
+    colorChange();
   }, [])
 
   return (
-    <div>
+    <div style={{ backgroundColor: cardColor, color: textColor}}>
       <ul>
         <li>Name: {card.name}</li>
         <li>Type: {card.type}</li>
