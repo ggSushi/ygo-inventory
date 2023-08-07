@@ -46,16 +46,21 @@ function CardSearch() {
         <input className="searchBar" type="text" onChange={event => handleSearchChange(event)} />
         <input type="submit" />
       </form>
+
       <h3>Search Results for: {searchDisplay}</h3>
-      {
-        searchData.map(card => (
-          <div key={card.id}>
-            <CardItem
-              card={card}
-            />
-          </div>
-        ))
-      }
+      <div id="search-content">
+        {
+          searchData.map(card => (
+            <div key={card.id}>
+              <CardItem
+                card={card}
+              />
+            </div>
+          ))
+        }
+      </div>
+
+
 
 
     </div>

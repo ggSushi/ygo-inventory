@@ -7,9 +7,9 @@ function CardItem({ card }) {
   const [textColor, setTextColor] = useState('black');
 
   const colorChange = () => {
-    if (card.type === 'Normal Monster') {
+    if (card.type === 'Normal Monster' || card.type === 'Gemini Monster') {
       setCardColor('#FFE09E');
-    } else if (card.type === 'Toon Monster' || card.type === 'Effect Monster') {
+    } else if (card.type === 'Toon Monster' || card.type === 'Effect Monster'  || card.type === 'Tuner Monster') {
       setCardColor('#B9855D');
       setTextColor('white');
     } else if (card.type === 'Fusion Monster') {
