@@ -8,9 +8,9 @@ import MyDecks from '../MyDecks/MyDecks.jsx';
 function App() {
   return (
     <div className="App-div">
-      <h1>Hello World</h1>
-      <Inventory />
+      <h1>Yu-Gi-Oh! Personal Inventory Database</h1>
       <CardSearch />
+      <Inventory />
       <MyDecks />
       <ConceptDecks />
     </div>

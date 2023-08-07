@@ -15,6 +15,11 @@ function CardSearch() {
     console.log(searchInput);
   }
 
+  const handleCardClick = (card) => {
+    dispatch({type: 'SET_CARD_INFO', payload: card});
+    console.log(`card is clicked! ${card.id}`)
+  }
+
   const handleFormSubmit = (e) => {
     e.preventDefault();
 
@@ -51,7 +56,7 @@ function CardSearch() {
       <div id="search-content">
         {
           searchData.map(card => (
-            <div key={card.id}>
+            <div key={card.id} onClick={() => handleCardClick(card)}>
               <CardItem
                 card={card}
               />
