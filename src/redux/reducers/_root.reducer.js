@@ -20,7 +20,16 @@ const cardClickInfo = (state = [], action) => {
   }
 }
 
-
+const quantity = (state = 0, action) => {
+  switch (action.type) {
+    case 'SET_QUANTITY':
+      return action.payload;
+    case 'RESET_QUANTITY':
+      return 0;
+    default:
+      return state;
+  }
+}
 
 const rootReducer = combineReducers({
   //* reducers go here.
@@ -29,6 +38,7 @@ const rootReducer = combineReducers({
   // reducers in store.
   searchData,
   cardClickInfo,
+  quantity,
 });
 
 export default rootReducer;
