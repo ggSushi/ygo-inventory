@@ -1,6 +1,7 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
@@ -10,6 +11,7 @@ import './CardStyle.css';
 
 function CardSearch() {
   const dispatch = useDispatch();
+  const history = useHistory();
   const searchData = useSelector(store => store.searchData);
   const [searchInput, setSearchInput] = useState('');
   const [searchDisplay, setSearchDisplay] = useState('');
@@ -21,6 +23,7 @@ function CardSearch() {
   const handleCardClick = (card) => {
     dispatch({ type: 'SET_CARD_INFO', payload: card });
     console.log(`card is clicked! ${card.id}`)
+    history.push('/card-info-page');
   }
 
   const handleFormSubmit = (e) => {
