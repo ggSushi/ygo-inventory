@@ -66,7 +66,7 @@ function CardSearch() {
         >
           {
             searchData.map(card => (
-              <Grid item xs={2} sm={3} key={card.id} onClick={() => handleCardClick(card)}>
+              <Grid item xs={2} sm={2} md={3} key={card.id} onClick={() => handleCardClick(card)}>
                 <CardItem
                   card={card}
                 />
