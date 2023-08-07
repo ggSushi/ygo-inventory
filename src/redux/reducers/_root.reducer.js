@@ -4,6 +4,8 @@ const searchData = (state = [], action) => {
   switch (action.type) {
     case 'SET_SEARCH_DATA':
       return action.payload;
+    case 'UNDEFINED_SEARCH':
+      return [];
     default:
       return state;
   }

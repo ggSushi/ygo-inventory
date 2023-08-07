@@ -7,7 +7,7 @@ import CardItem from './CardItem.jsx';
 function CardSearch() {
   const dispatch = useDispatch();
   const searchData = useSelector(store => store.searchData);
-  const [searchInput, setSearchInput] = useState('');
+  const [searchInput, setSearchInput] = useState('marshmallon');
   const [searchDisplay, setSearchDisplay] = useState('')
   
   const handleSearchChange = (event) => {
@@ -17,12 +17,17 @@ function CardSearch() {
   
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    
+
     setSearchDisplay('');
     setSearchDisplay(searchInput);
 
     // Axios request
-    axios.post(`/search`, {
+    if (searchInput === undefined || searchInput === '') {
+      alert('Please enter something in the search');
+      dispatch({type: 'UNDEFINED_SEARCH'})
+      return;
+    } else {
+      axios.post(`/search`, {
       value: searchInput
     }).then(response => {
       console.log(`response OK: ${response.data}`);
@@ -31,6 +36,7 @@ function CardSearch() {
       console.log(`Error in CardSearch POST: ${error}`);
       alert('Something is wrong, Mr. ggKaiba');
     });
+    }
   }
   
   return (
