@@ -1,0 +1,10 @@
+#card-item {
+  height: 170px;
+  border: 2px black solid;
+  border-radius: 5px;
+}
+
+li {
+  list-style: none;
+  padding: 0;
+}

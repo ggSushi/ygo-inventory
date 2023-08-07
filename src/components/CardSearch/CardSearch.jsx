@@ -2,7 +2,11 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
+import Box from '@mui/material/Box';
+import Grid from '@mui/material/Grid';
 import CardItem from './CardItem.jsx';
+import './CardStyle.css';
+
 
 function CardSearch() {
   const dispatch = useDispatch();
@@ -15,7 +19,7 @@ function CardSearch() {
   }
 
   const handleCardClick = (card) => {
-    dispatch({type: 'SET_CARD_INFO', payload: card});
+    dispatch({ type: 'SET_CARD_INFO', payload: card });
     console.log(`card is clicked! ${card.id}`)
   }
 
@@ -45,24 +49,30 @@ function CardSearch() {
 
   return (
     <div>
-      CardSearch Component
+      Search YGOProDeck database:
       <form id="searchForm" onSubmit={event => handleFormSubmit(event)}>
         <input className="searchBar" type="text" onChange={event => handleSearchChange(event)} />
         <input type="submit" />
       </form>
 
       <h3>Search Results for: {searchDisplay}</h3>
-      <div id="search-content">
-        {
-          searchData.map(card => (
-            <div key={card.id} onClick={() => handleCardClick(card)}>
-              <CardItem
-                card={card}
-              />
-            </div>
-          ))
-        }
-      </div>
+      <Box sx={{ flexGrow: 1 }}>
+        <Grid container
+          spacing={{ xs: 2, md: 3 }}
+          columns={{ xs: 4, sm: 8, md: 12 }}
+        >
+          {
+            searchData.map(card => (
+              <Grid item xs={2} sm={3} key={card.id} onClick={() => handleCardClick(card)}>
+                <CardItem
+                  card={card}
+                />
+              </Grid>
+            ))
+          }
+        </Grid>
+      </Box>
+
 
 
 
