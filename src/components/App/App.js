@@ -11,11 +11,14 @@ import CardSearch from '../CardSearch/CardSearch.jsx';
 import ConceptDecks from '../ConceptDecks/ConceptDecks.jsx';
 import MyDecks from '../MyDecks/MyDecks.jsx';
 import CardInfoPage from '../CardInfoPage/CardInfoPage.jsx';
+import HomePage from '../HomePage/HomePage.jsx'
+import Nav from '../Nav/Nav.jsx';
 
 
 function App() {
   return (
     <Router>
+      <Nav />
       <Switch>
         <Redirect exact from="/" to="/home" />
         <Route exact path="/card-info-page">
@@ -34,11 +37,7 @@ function App() {
           <ConceptDecks />
         </Route>
         <Route exact path="/home">
-          <div className="App-div">
-            <h1>Yu-Gi-Oh! Personal Inventory Database</h1>
-
-
-          </div>
+          <HomePage />
         </Route>
       </Switch>
     </Router>

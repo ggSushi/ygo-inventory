@@ -6,27 +6,28 @@ import './Nav.css';
 
 function Nav() {
 
-  return(
+  return (
 
-    <>
-    <div>
-      <Link className="navLink" to='/home'>
-        Home
-      </Link>
-      <Link className="navLink" to='/api-search'>
-        Search
-      </Link>
-      <Link className="navLink" to='/card-inventory'>
-        Inventory
-      </Link>
-      <Link className="navLink" to='/my-decks'>
-        My Decks
-      </Link>
-      <Link className="navLink" to='/concept-decks'>
-        Concept Decks
-      </Link>
+    <div className="nav">
+      <h1>Yu-Gi-Oh! Personal Inventory Database</h1>
+      <div>
+        <Link className="navLink" to='/home'>
+          Home
+        </Link>
+        <Link className="navLink" to='/api-search'>
+          Search
+        </Link>
+        <Link className="navLink" to='/card-inventory'>
+          Inventory
+        </Link>
+        <Link className="navLink" to='/my-decks'>
+          My Decks
+        </Link>
+        <Link className="navLink" to='/concept-decks'>
+          Concept Decks
+        </Link>
+      </div>
     </div>
-    </>
   )
 }
 
