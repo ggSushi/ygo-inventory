@@ -21,13 +21,23 @@ function App() {
         <Route exact path="/card-info-page">
           <CardInfoPage />
         </Route>
+        <Route exact path="/api-search">
+          <CardSearch />
+        </Route>
+        <Route exact path="/card-inventory">
+          <Inventory />
+        </Route>
+        <Route exact path="/my-decks">
+          <MyDecks />
+        </Route>
+        <Route exact path="/concept-decks">
+          <ConceptDecks />
+        </Route>
         <Route exact path="/home">
           <div className="App-div">
             <h1>Yu-Gi-Oh! Personal Inventory Database</h1>
-            <CardSearch />
-            <Inventory />
-            <MyDecks />
-            <ConceptDecks />
+
+
           </div>
         </Route>
       </Switch>

@@ -19,10 +19,10 @@ function CardInfoPage() {
   const quantityChange = (e) => {
     dispatch({ type: 'SET_QUANTITY', payload: e.target.value });
     setNumbDisplay(e.target.value);
-    console.log(numbDisplay);
   }
 
   useEffect(() => {
+    // This line of code checks to see if objects have the specified property and returns a boolean value.
     console.log('hasProperty?', cardInfo.hasOwnProperty('card_sets'))
   }, [])
 
