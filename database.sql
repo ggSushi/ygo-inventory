@@ -5,7 +5,7 @@ CREATE TABLE "inventory"(
 	card_name varchar NOT NULL,
 	card_id INT NOT NULL,
 	card_type varchar NOT NULL,
-	frameType varchar,
+	"frameType" varchar,
 	"desc" varchar NOT NULL,
 	atk varchar,
 	def varchar,
@@ -19,7 +19,7 @@ CREATE TABLE "inventory"(
 	card_images varchar[],
 	quantity INT NOT NULL,
 --	storage_location will be the name of a deck, a marked tin/box, or a binder name
-	storage_location varchar NOT NULL
+	storage_location varchar
 	);
 	
 CREATE TABLE "my_decks"(

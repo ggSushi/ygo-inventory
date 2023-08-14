@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import axios from 'axios';
 
 
 function CardInfoPage() {
@@ -21,6 +22,38 @@ function CardInfoPage() {
   useEffect(() => {
     console.log('hasProperty?', cardInfo.hasOwnProperty('card_sets'))
   }, [])
+
+  const handleSubmitToInv = (e) => {
+    e.preventDefault();
+    if (quantity === '' || quantity === undefined) {
+      alert(`Please enter a valid quantity into Inventory.`);
+      return;
+    } else {
+      axios.post(`/inventory/addToInv`, {
+        name: cardInfo.name,
+        id: cardInfo.id,
+        type: cardInfo.type,
+        frameType: cardInfo.frameType,
+        desc: cardInfo.desc,
+        atk: cardInfo.atk,
+        def: cardInfo.def,
+        level: cardInfo.level,
+        race: cardInfo.race,
+        attribute: cardInfo.attribute,
+        card_sets: cardInfo.card_sets,
+        card_images: cardInfo.card_images,
+        quantity: quantity,
+        storage_location: 'inventory'
+      }).then((response) => {
+        alert(`Successfully added ${cardInfo.name} to Inventory!`);
+        console.log(`Added ${cardInfo.name} to inventory.`);
+      }).catch((error) => {
+        console.log(`Error in axios addToInv ${error}`);
+        alert(`Couldn't add card into inventory, Mr. ggKaiba.`);
+      });
+    }
+    dispatch({type: 'RESET_QUANTITY'});
+  }
 
   return (
     <div>
@@ -82,7 +115,7 @@ function CardInfoPage() {
       <hr/>
       <button onClick={backToSearch}>Back to Search</button>
       <div>
-        <form >
+        <form id="inventory-form" onSubmit={(event) => handleSubmitToInv(event)}>
           Add this many cards to your Inventory: <i>{quantity}</i>
           <br />
           <input type="number" placeholder="Enter quantity (e.g. 3)" onChange={(e) => quantityChange(e)} />
