@@ -7,6 +7,7 @@ import axios from 'axios';
 function CardInfoPage() {
   const cardInfo = useSelector(store => store.cardClickInfo);
   const quantity = useSelector(store => store.quantity);
+  const [numbDisplay, setNumbDisplay] = useState('');
   const history = useHistory();
   const dispatch = useDispatch();
 
@@ -17,6 +18,8 @@ function CardInfoPage() {
 
   const quantityChange = (e) => {
     dispatch({ type: 'SET_QUANTITY', payload: e.target.value });
+    setNumbDisplay(e.target.value);
+    console.log(numbDisplay);
   }
 
   useEffect(() => {
@@ -53,6 +56,7 @@ function CardInfoPage() {
       });
     }
     dispatch({type: 'RESET_QUANTITY'});
+    setNumbDisplay('');
   }
 
   return (
@@ -118,7 +122,7 @@ function CardInfoPage() {
         <form id="inventory-form" onSubmit={(event) => handleSubmitToInv(event)}>
           Add this many cards to your Inventory: <i>{quantity}</i>
           <br />
-          <input type="number" placeholder="Enter quantity (e.g. 3)" onChange={(e) => quantityChange(e)} />
+          <input type="number" placeholder="Enter quantity (e.g. 3)" onChange={(e) => quantityChange(e)} value={numbDisplay}/>
           <input type="submit" value="Add to Inventory" />
         </form>
       </div>
