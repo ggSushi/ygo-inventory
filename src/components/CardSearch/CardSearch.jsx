@@ -32,7 +32,7 @@ function CardSearch() {
     setSearchDisplay('');
     setSearchDisplay(searchInput);
 
-    // Axios request
+    // Axios request to YGOProDeck API
     if (searchInput === undefined || searchInput === '') {
       alert('Please enter something in the search');
       dispatch({ type: 'UNDEFINED_SEARCH' })
