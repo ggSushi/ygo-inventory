@@ -5,7 +5,12 @@ const pool = require('../modules/pool.js');
 // TODO GET Requests
 inventoryRouter.get('/getAll', (req,res) => {
   const queryText = `SELECT * from "inventory";`;
-  pool.query(queryText, )
+  pool.query(queryText).then((result) => {
+    res.send(result.rows);
+  }).catch((error) => {
+    console.log(`Error in /getAll: ${error}`);
+    res.sendStatus(500);
+  })
 })
 
 // TODO POST Requests
