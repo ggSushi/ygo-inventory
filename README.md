@@ -1,70 +1,38 @@
-# Getting Started with Create React App
+# **Yu-Gi-Oh! Inventory Database (Local)**
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This app is intended to be a personal inventory database of all current Yu-Gi-Oh! TCG cards currently owned by the user and implements the use of <a href="https://ygoprodeck.com/api-guide/">YGOPRODeck's API</a>. 
 
-## Available Scripts
+### **_Current Status_**
+Search through YGOPRODeck's API is functional, as well as storing cards into local database.
 
-In the project directory, you can run:
+### **_Function_**
+The user will be able to:
+- Search for the desired cards
+- Save those cards with a set initial quantity to their database 
+- Set/Change storage location of cards (User will need to have a storage system of some type already in mind. This is specific to the user)
+- Build their currently owned decks within the app, using their own database as inventory for available cards
+- Build concept decks using a mix of their own inventory and cards they will need in the future
+- Create a wishlist of cards for future deck building/ collecting
 
-### `npm start`
+### **_Technologies Used_**
+- JavaScript, HTML, CSS
+- NodeJS, ExpressJS
+- React, React Redux, Redux Saga
+- Axios
+- PostgreSQL
+- Material UI
+- YGOPRODeck API
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+All of the above is already installed. All that is required is that you run the command below in terminal once you have this repo/template cloned to your device:
+```javascript
+npm install
+```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+After which, you can open this in code and type the following command to have it open up in your browser, localhost:5006.
+```javascript
+npm run server
+npm run client
+```
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### **Device Prerequisites**
+I have **Postgres** and **Postico** installed on my device to handle database SQL, while I also have **VS Code** as my chosen source code editor.
