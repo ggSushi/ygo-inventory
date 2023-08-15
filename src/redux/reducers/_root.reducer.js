@@ -6,6 +6,8 @@ const searchData = (state = [], action) => {
       return action.payload;
     case 'UNDEFINED_SEARCH':
       return [];
+    case 'RESET_SEARCH':
+      return [];
     default:
       return state;
   }

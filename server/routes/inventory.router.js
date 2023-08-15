@@ -3,7 +3,10 @@ const inventoryRouter = express.Router();
 const pool = require('../modules/pool.js');
 
 // TODO GET Requests
-
+inventoryRouter.get('/getAll', (req,res) => {
+  const queryText = `SELECT * from "inventory";`;
+  pool.query(queryText, )
+})
 
 // TODO POST Requests
 inventoryRouter.post('/addToInv', (req, res) => {

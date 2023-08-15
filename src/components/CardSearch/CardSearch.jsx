@@ -20,6 +20,11 @@ function CardSearch() {
     setSearchInput(event.target.value);
   }
 
+  const handleResetSearch = () => {
+    dispatch({type: 'RESET_SEARCH'});
+    setSearchInput('');
+  }
+
   const handleCardClick = (card) => {
     dispatch({ type: 'SET_CARD_INFO', payload: card });
     console.log(`card is clicked! ${card.id}`)
@@ -54,9 +59,10 @@ function CardSearch() {
     <div>
       Search YGOProDeck database:
       <form id="searchForm" onSubmit={event => handleFormSubmit(event)}>
-        <input className="searchBar" type="text" onChange={event => handleSearchChange(event)} />
+        <input className="searchBar" type="text" onChange={event => handleSearchChange(event)} value={searchInput} placeholder="e.g. 'Golden Rule'"/>
         <input type="submit" />
       </form>
+      <button className="reset-search" onClick={() => handleResetSearch()}>Clear Search</button>
 
       <h3>Search Results for: {searchDisplay}</h3>
       <Box sx={{ flexGrow: 1 }}>

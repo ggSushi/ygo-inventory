@@ -13,7 +13,7 @@ function CardInfoPage() {
 
   const backToSearch = () => {
     dispatch({ type: 'RESET_QUANTITY' })
-    history.push('/home')
+    history.push('/api-search')
   }
 
   const quantityChange = (e) => {
