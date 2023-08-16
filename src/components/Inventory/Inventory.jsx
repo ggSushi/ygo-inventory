@@ -8,6 +8,7 @@ function Inventory() {
     <div>
       <h2>Card Inventory</h2>
       Need to make sagas for DB GET Requests still. -gd
+      <button >Search Inventory</button>
     </div>
   )
 }
