@@ -22,9 +22,14 @@ function CardInfoPage() {
     setNumbDisplay(e.target.value);
   }
 
+  const locationChange = (e) => {
+    dispatch({ type: 'SET_LOCATION', payload: e.target.value})
+    // console.log(location)
+  }
+
   useEffect(() => {
     // This line of code checks to see if objects have the specified property and returns a boolean value.
-    console.log('hasProperty?', cardInfo.hasOwnProperty('card_sets'))
+    // console.log('hasProperty?', cardInfo.hasOwnProperty('card_sets'))
   }, [])
 
   const handleSubmitToInv = (e) => {
@@ -47,7 +52,7 @@ function CardInfoPage() {
         card_sets: cardInfo.card_sets,
         card_images: cardInfo.card_images,
         quantity: quantity,
-        storage_location: 'inventory'
+        storage_location: location
       }).then((response) => {
         alert(`Successfully added ${cardInfo.name} to Inventory!`);
         console.log(`Added ${cardInfo.name} to inventory.`);
@@ -172,20 +177,21 @@ function CardInfoPage() {
           Add this many cards to your Inventory in your {location}: <i>{quantity}</i>
           <br />
           <input type="number" placeholder="Enter quantity (e.g. 3)" onChange={(e) => quantityChange(e)} value={numbDisplay} />
-          <select>
-            <option>Card Box S1</option>
-            <option>Card Box S2</option>
-            <option>Card Box T1</option>
-            <option>Card Box T2 (YGO Small Box)</option>
-            <option>Card Box M1 (Big Box)</option>
-            <option>Collector's Binder 1 (Pink)</option>
-            <option>Collector's Binder 2 (Gray)</option>
-            <option>Binder 1 (White)</option>
-            <option>Binder 2 (Black)</option>
-            <option>Single Binder 1 (Red)</option>
-            <option>Single Binder 2 (White)</option>
-            <option>Single Binder 3 (Blue)</option>
-            <option>Personal Single Binder 1 (Black)</option>
+          <select onChange={(e) => locationChange(e)}>
+            <option value="cardBoxS1">Card Box S1</option>
+            <option value="cardBoxS2">Card Box S2</option>
+            <option value="cardBoxT1">Card Box T1</option>
+            <option value="cardBoxT2">Card Box T2 (YGO Small Box)</option>
+            <option value="cardBoxM1">Card Box M1 (Big Box)</option>
+            <option value="collectorBinder1">Collector's Binder 1 (Pink)</option>
+            <option value="collectorBinder2">Collector's Binder 2 (Gray)</option>
+            <option value="binder1">Binder 1 (White)</option>
+            <option value="binder2">Binder 2 (Black)</option>
+            <option value="singleBinder1">Single Binder 1 (Red)</option>
+            <option value="singleBinder2">Single Binder 2 (White)</option>
+            <option value="singleBinder3">Single Binder 3 (Blue)</option>
+            <option value="mySingleBinder1">Personal Single Binder 1 (Black)</option>
+            <option value="other">Other (Change Later)</option>
           </select>
           <input type="submit" value="Add to Inventory" />
         </form>
