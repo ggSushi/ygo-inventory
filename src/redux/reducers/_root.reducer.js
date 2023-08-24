@@ -33,6 +33,17 @@ const quantity = (state = 0, action) => {
   }
 }
 
+const location = (state = '', action) => {
+  switch (action.type) {
+    case 'SET_LOCATION' :
+      return action.payload;
+    case 'RESET_LOCATION':
+      return '';
+    default:
+      return state;
+  }
+}
+
 const rootReducer = combineReducers({
   //* reducers go here.
   // If there are no existing reducers, console log 
@@ -41,6 +52,7 @@ const rootReducer = combineReducers({
   searchData,
   cardClickInfo,
   quantity,
+  location,
 });
 
 export default rootReducer;

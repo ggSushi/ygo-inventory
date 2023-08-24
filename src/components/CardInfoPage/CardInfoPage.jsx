@@ -7,6 +7,7 @@ import axios from 'axios';
 function CardInfoPage() {
   const cardInfo = useSelector(store => store.cardClickInfo);
   const quantity = useSelector(store => store.quantity);
+  const location = useSelector(store => store.location)
   const [numbDisplay, setNumbDisplay] = useState('');
   const history = useHistory();
   const dispatch = useDispatch();
@@ -28,7 +29,7 @@ function CardInfoPage() {
 
   const handleSubmitToInv = (e) => {
     e.preventDefault();
-    if (quantity === '' || quantity === undefined) {
+    if (quantity === '' || quantity === undefined || cardInfo.name === '' || cardInfo.name === undefined || numbDisplay === '' || numbDisplay === undefined) {
       alert(`Please enter a valid quantity into Inventory.`);
       return;
     } else {
@@ -168,9 +169,24 @@ function CardInfoPage() {
       <button onClick={backToSearch}>Back to Search</button>
       <div>
         <form id="inventory-form" onSubmit={(event) => handleSubmitToInv(event)}>
-          Add this many cards to your Inventory: <i>{quantity}</i>
+          Add this many cards to your Inventory in your {location}: <i>{quantity}</i>
           <br />
           <input type="number" placeholder="Enter quantity (e.g. 3)" onChange={(e) => quantityChange(e)} value={numbDisplay} />
+          <select>
+            <option>Card Box S1</option>
+            <option>Card Box S2</option>
+            <option>Card Box T1</option>
+            <option>Card Box T2 (YGO Small Box)</option>
+            <option>Card Box M1 (Big Box)</option>
+            <option>Collector's Binder 1 (Pink)</option>
+            <option>Collector's Binder 2 (Gray)</option>
+            <option>Binder 1 (White)</option>
+            <option>Binder 2 (Black)</option>
+            <option>Single Binder 1 (Red)</option>
+            <option>Single Binder 2 (White)</option>
+            <option>Single Binder 3 (Blue)</option>
+            <option>Personal Single Binder 1 (Black)</option>
+          </select>
           <input type="submit" value="Add to Inventory" />
         </form>
       </div>
