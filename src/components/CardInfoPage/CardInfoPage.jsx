@@ -55,14 +55,14 @@ function CardInfoPage() {
         alert(`Couldn't add card into inventory, Mr. ggKaiba.`);
       });
     }
-    dispatch({type: 'RESET_QUANTITY'});
+    dispatch({ type: 'RESET_QUANTITY' });
     setNumbDisplay('');
   }
 
   return (
     <div>
       <h2>{cardInfo.name}
-      <br/>
+        <br />
         {
           cardInfo.type === 'Spell Card' || cardInfo.type === 'Trap Card' ? (
             <>
@@ -114,15 +114,63 @@ function CardInfoPage() {
             </div>
           )
         }
+        <table id="pricing-table">
+          <thead>
+            <tr>
+              <th>Source</th>
+              <th>Current Price</th>
+            </tr>
+          </thead>
+          <tbody>
+            {
+            cardInfo.hasOwnProperty('card_prices') === false ? (
+              <tr>
+                <td>No Source</td>
+                <td>N/A</td>
+              </tr>
+            ) : (
+              <div id="extra-info">
+                {
+                  cardInfo.card_prices.map(set => (
+                    <div key={set.id}>
+                      <tr>
+                      <td>General Market</td>
+                      <td><i>{set.cardmarket_price}</i></td>
+                      </tr>
+                      <tr>
+                      <td>TCGPlayer</td>
+                      <td><i>{set.tcgplayer_price}</i></td>
+                      </tr>
+                      <tr>
+                      <td>eBay</td>
+                      <td><i>{set.ebay_price}</i></td>
+                      </tr>
+                      <tr>
+                      <td>Amazon</td>
+                      <td><i>{set.amazon_price}</i></td>
+                      </tr>
+                      <tr>
+                      <td>CoolStuffInc.com</td>
+                      <td><i>{set.coolstuffinc_price}</i></td>
+                      </tr>
+                    </div>
+                  ))
+                }
+              </div>
+            )
+          }
+            
+          </tbody>
+        </table>
 
       </div>
-      <hr/>
+      <hr />
       <button onClick={backToSearch}>Back to Search</button>
       <div>
         <form id="inventory-form" onSubmit={(event) => handleSubmitToInv(event)}>
           Add this many cards to your Inventory: <i>{quantity}</i>
           <br />
-          <input type="number" placeholder="Enter quantity (e.g. 3)" onChange={(e) => quantityChange(e)} value={numbDisplay}/>
+          <input type="number" placeholder="Enter quantity (e.g. 3)" onChange={(e) => quantityChange(e)} value={numbDisplay} />
           <input type="submit" value="Add to Inventory" />
         </form>
       </div>
