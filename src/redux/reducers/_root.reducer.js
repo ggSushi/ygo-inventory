@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-
+//* YGOProDeck API reducers
 const searchData = (state = [], action) => {
   switch (action.type) {
     case 'SET_SEARCH_DATA':
@@ -44,6 +44,30 @@ const location = (state = '', action) => {
   }
 }
 
+//* localhost DB reducers
+const invGetAll = (state = [], action) => {
+  switch (action.type) {
+    case 'SET_INVENTORY_ALL':
+      return action.payload;
+    case 'RESET_INVENTORY_ALL':
+      return [];
+    default:
+      return state;
+  }
+}
+
+const invGetCard = (state = [], action) => {
+  switch (action.type) {
+    case 'SET_INVENTORY_CARD':
+      return action.payload;
+    case 'RESET_INVENTORY_CARD':
+      return [];
+    default:
+      return state;
+  }
+}
+
+
 const rootReducer = combineReducers({
   //* reducers go here.
   // If there are no existing reducers, console log 
@@ -53,6 +77,8 @@ const rootReducer = combineReducers({
   cardClickInfo,
   quantity,
   location,
+  invGetAll,
+  invGetCard,
 });
 
 export default rootReducer;

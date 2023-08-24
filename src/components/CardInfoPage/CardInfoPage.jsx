@@ -138,7 +138,7 @@ function CardInfoPage() {
               <div id="extra-info">
                 {
                   cardInfo.card_prices.map(set => (
-                    <div key={set.id}>
+                    <div key={set.cardmarket_price}>
                       <tr>
                       <td>General Market</td>
                       <td><i>{set.cardmarket_price}</i></td>
