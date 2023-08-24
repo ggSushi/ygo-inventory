@@ -174,24 +174,29 @@ function CardInfoPage() {
       <button onClick={backToSearch}>Back to Search</button>
       <div>
         <form id="inventory-form" onSubmit={(event) => handleSubmitToInv(event)}>
-          Add this many cards to your Inventory in your {location}: <i>{quantity}</i>
+          Add this many cards to your Inventory in your <b>{location}:</b> <i>{quantity}</i>
           <br />
           <input type="number" placeholder="Enter quantity (e.g. 3)" onChange={(e) => quantityChange(e)} value={numbDisplay} />
           <select onChange={(e) => locationChange(e)}>
-            <option value="cardBoxS1">Card Box S1</option>
-            <option value="cardBoxS2">Card Box S2</option>
-            <option value="cardBoxT1">Card Box T1</option>
-            <option value="cardBoxT2">Card Box T2 (YGO Small Box)</option>
-            <option value="cardBoxM1">Card Box M1 (Big Box)</option>
-            <option value="collectorBinder1">Collector's Binder 1 (Pink)</option>
-            <option value="collectorBinder2">Collector's Binder 2 (Gray)</option>
-            <option value="binder1">Binder 1 (White)</option>
-            <option value="binder2">Binder 2 (Black)</option>
-            <option value="singleBinder1">Single Binder 1 (Red)</option>
-            <option value="singleBinder2">Single Binder 2 (White)</option>
-            <option value="singleBinder3">Single Binder 3 (Blue)</option>
-            <option value="mySingleBinder1">Personal Single Binder 1 (Black)</option>
-            <option value="other">Other (Change Later)</option>
+            <option>Card Box S1</option>
+            <option>Card Box S2</option>
+            <option>Card Box T1</option>
+            <option>Card Box T2 (YGO Small Box)</option>
+            <option>Card Box M1 (Big Box)</option>
+            <option>Card Storage E1</option>
+            <option>Card Storage E2</option>
+            <option>Card Storage E3</option>
+            <option>Collector's Binder 1 (Pink)</option>
+            <option>Collector's Binder 2 (Gray)</option>
+            <option>Binder 1 (White)</option>
+            <option>Binder 2 (Black)</option>
+            <option>Single Binder 1 (Red)</option>
+            <option>Single Binder 2 (White)</option>
+            <option>Single Binder 3 (Blue)</option>
+            <option>Personal Single Binder 1 (Black)</option>
+            <option>Personal Deck Box</option>
+            <option>Deck Box (Red)</option>
+            <option>Other (Change Later)</option>
           </select>
           <input type="submit" value="Add to Inventory" />
         </form>
