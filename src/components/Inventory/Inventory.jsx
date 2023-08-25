@@ -24,15 +24,23 @@ function Inventory() {
     setSearchInput(e.target.value);
   }
 
+  const resetSearch = () => {
+    dispatch({type: 'FETCH_INVENTORY_ALL'})
+    setSearchInput('')
+  }
+
   const handleSearchSubmit = (e, filter) => {
     e.preventDefault();
     if (filter === 'Name') {
       dispatch({type: 'FETCH_SEARCH_NAME', payload: searchInput})
     } else if (filter === 'Card ID') {
-
-    } else if (filter === 'Description') {
-
-    } else {
+      dispatch({type: 'FETCH_SEARCH_ID', payload: searchInput})
+    } 
+    //!!! Can't get the Description filter working just yet. -gd
+    // else if (filter === 'Description') {
+    //   dispatch({type: 'FETCH_SEARCH_DESCRIPTION', payload :searchInput})
+    // } 
+    else {
       dispatch({ type: 'FETCH_INVENTORY_ALL'})
       console.log(`No Filter applied, Mt. ggKaiba.`)
     }
@@ -51,12 +59,13 @@ function Inventory() {
         <select onChange={e => handleFilterChange(e)}>
           <option>Name</option>
           <option>Card ID</option>
-          <option>Description</option>
+          {/* <option>Description</option> */}
         </select>
         <form onSubmit={e => handleSearchSubmit(e, filter)}>
-          <input type="text" onChange={e => handleInputChange(e)} placeholder="e.g. 'golden' or 'rule'" />
+          <input type="text" onChange={e => handleInputChange(e)} placeholder="e.g. 'golden' or 'rule'" value={searchInput}/>
           <input type="submit" />
         </form>
+        <button onClick={resetSearch}>Reset Search</button>
       </div>
       <Box>
         Search Results by {filter}:

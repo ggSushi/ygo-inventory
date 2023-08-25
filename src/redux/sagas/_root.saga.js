@@ -15,7 +15,7 @@ function* fetchInventory() {
 function* searchNameInv(action) {
   try {
     let name = action.payload
-    const searchCard = yield axios.get(`/inventory/search/${name}`);
+    const searchCard = yield axios.get(`/inventory/searchName/${name}`);
     yield put({ type: 'SET_INVENTORY_ALL', payload: searchCard.data })
   } catch (error) {
     console.log(`Error in Search Card GET: ${error}`);
@@ -23,10 +23,21 @@ function* searchNameInv(action) {
   }
 }
 
-function* searchNameId(action) {
+function* searchIdInv(action) {
   try {
     let id = action.payload
-    const searchCard = yield axios.get(`/inventory/search/${id}`);
+    const searchCard = yield axios.get(`/inventory/searchId/${id}`);
+    yield put({ type: 'SET_INVENTORY_ALL', payload: searchCard.data })
+  } catch (error) {
+    console.log(`Error in Search Card GET: ${error}`);
+    alert(`Search is incomplete, Mr. ggKaiba`)
+  }
+}
+
+function* searchDescInv(action) {
+  try {
+    let input = action.payload
+    const searchCard = yield axios.get(`/inventory/searchDesc/${input}`);
     yield put({ type: 'SET_INVENTORY_ALL', payload: searchCard.data })
   } catch (error) {
     console.log(`Error in Search Card GET: ${error}`);
@@ -40,7 +51,9 @@ function* rootSaga() {
   yield all([
     // sagas go here
     yield takeEvery('FETCH_INVENTORY_ALL', fetchInventory),
-    yield takeLatest('FETCH_SEARCH_NAME', searchNameInv)
+    yield takeLatest('FETCH_SEARCH_NAME', searchNameInv),
+    yield takeLatest('FETCH_SEARCH_ID', searchIdInv),
+    yield takeEvery('FETCH_SEARCH_DESCRIPTION', searchDescInv),
   ]);
 }
 
