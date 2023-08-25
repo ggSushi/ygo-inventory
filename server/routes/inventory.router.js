@@ -7,7 +7,7 @@ inventoryRouter.get('/getAll', (req,res) => {
   //! disabled code for more efficient display data -gd
   // const queryText = `SELECT * from "inventory";`;
   const queryText = `Select "id", "card_id", "card_name", "card_type", "storage_location", "quantity"
-  from "inventory";`;
+  from "inventory" order by "card_name" ASC;`;
   pool.query(queryText).then((result) => {
     res.send(result.rows);
   }).catch((error) => {

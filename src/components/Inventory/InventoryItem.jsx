@@ -1,5 +1,6 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
+import './InventoryItem.css'
 
 function InventoryItem({ card }) {
   const [cardColor, setCardColor] = useState('transparent');
