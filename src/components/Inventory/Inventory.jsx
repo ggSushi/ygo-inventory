@@ -1,5 +1,6 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
+import {useHistory} from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
@@ -7,6 +8,7 @@ import InventoryItem from './InventoryItem.jsx'
 
 function Inventory() {
   const dispatch = useDispatch();
+  const history = useHistory();
   const inventoryAll = useSelector(store => store.invGetAll);
   const [searchInput, setSearchInput] = useState('');
   const [filter, setFilter] = useState('Name');
@@ -14,6 +16,12 @@ function Inventory() {
   const getCardInventory = () => {
     dispatch({ type: 'FETCH_INVENTORY_ALL'})
     console.log('OK GET')
+  }
+
+  const handleCardClick = (card) => {
+    dispatch({type: 'SET_CARD_INFO', payload: card});
+    console.log(`inventory card is clicked! ${card.id}`);
+    
   }
 
   const handleFilterChange = (e) => {
@@ -75,7 +83,7 @@ function Inventory() {
         >
           {
             inventoryAll.map(card => (
-              <Grid item xs={2} sm={2} md={3} key={card.id}>
+              <Grid item xs={2} sm={2} md={3} key={card.id} onClick={() => handleCardClick(card)}>
                 <InventoryItem card={card}/>
               </Grid>
             ))
