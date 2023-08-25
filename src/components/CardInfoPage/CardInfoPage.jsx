@@ -23,7 +23,7 @@ function CardInfoPage() {
   }
 
   const locationChange = (e) => {
-    dispatch({ type: 'SET_LOCATION', payload: e.target.value})
+    dispatch({ type: 'SET_LOCATION', payload: e.target.value })
     // console.log(location)
   }
 
@@ -129,43 +129,42 @@ function CardInfoPage() {
           </thead>
           <tbody>
             {
-            cardInfo.hasOwnProperty('card_prices') === false ? (
-              <tr>
-                <td>No Source</td>
-                <td>N/A</td>
-              </tr>
-            ) : (
-              <div id="extra-info">
-                {
-                  cardInfo.card_prices.map(set => (
-                    <div key={set.cardmarket_price}>
-                      <tr>
-                      <td>General Market</td>
-                      <td><i>{set.cardmarket_price}</i></td>
-                      </tr>
-                      <tr>
-                      <td>TCGPlayer</td>
-                      <td><i>{set.tcgplayer_price}</i></td>
-                      </tr>
-                      <tr>
-                      <td>eBay</td>
-                      <td><i>{set.ebay_price}</i></td>
-                      </tr>
-                      <tr>
-                      <td>Amazon</td>
-                      <td><i>{set.amazon_price}</i></td>
-                      </tr>
-                      <tr>
-                      <td>CoolStuffInc.com</td>
-                      <td><i>{set.coolstuffinc_price}</i></td>
-                      </tr>
-                    </div>
-                  ))
-                }
-              </div>
-            )
-          }
-            
+              cardInfo.hasOwnProperty('card_prices') === false ? (
+                <tr>
+                  <td>No Source</td>
+                  <td>N/A</td>
+                </tr>
+              ) : (
+                <div id="extra-info">
+                  {
+                    cardInfo.card_prices.map(set => (
+                      <div key={set.cardmarket_price}>
+                        <tr>
+                          <td>General Market</td>
+                          <td><i>{set.cardmarket_price}</i></td>
+                        </tr>
+                        <tr>
+                          <td>TCGPlayer</td>
+                          <td><i>{set.tcgplayer_price}</i></td>
+                        </tr>
+                        <tr>
+                          <td>eBay</td>
+                          <td><i>{set.ebay_price}</i></td>
+                        </tr>
+                        <tr>
+                          <td>Amazon</td>
+                          <td><i>{set.amazon_price}</i></td>
+                        </tr>
+                        <tr>
+                          <td>CoolStuffInc.com</td>
+                          <td><i>{set.coolstuffinc_price}</i></td>
+                        </tr>
+                      </div>
+                    ))
+                  }
+                </div>
+              )
+            }
           </tbody>
         </table>
 

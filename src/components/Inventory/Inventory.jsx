@@ -26,7 +26,15 @@ function Inventory() {
       </div>
       <div>
         Search Results:
-        {JSON.stringify(inventoryAll)}
+        {
+          inventoryAll.map(card => (
+            <div key={card.id}>
+              <b>{card.card_name}</b> || <i>{card.card_type}</i>
+              <br/>
+              Location: <b>{card.storage_location}</b> || Quantity: <b>{card.quantity}</b>
+            </div>
+          ))
+        }
       </div>
     </div>
   )
