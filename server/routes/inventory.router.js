@@ -16,10 +16,11 @@ inventoryRouter.get('/getCards', (req,res) => {
   })
 })
 
-inventoryRouter.get('/getCards/:id', (req,res) => {
+//!!! Below is the fuzzy search syntax using the $1 syntax. It was stressfull. Thanks, chatGPT -gd
+inventoryRouter.get('/search/:name', (req,res) => {
   const queryText = `Select "id", "card_id", "card_name", "card_type", "storage_location", "quantity"
-  from "inventory" where "card_id" = $1 order by "card_name" ASC;`;
-  pool.query(queryText, [req.params.id]).then((result) => {
+  from "inventory" where "card_name" ILIKE '%' ||$1|| '%' order by "card_name" ASC;`;
+  pool.query(queryText, [req.params.name]).then((result) => {
     res.send(result.rows);
   }).catch((error) => {
     console.log(`Error in /getCards: ${error}`);

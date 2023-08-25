@@ -12,7 +12,7 @@ function Inventory() {
   const [filter, setFilter] = useState('Name');
 
   const getCardInventory = () => {
-    dispatch({ type: 'FETCH_INVENTORY_ALL', payload: 'all' })
+    dispatch({ type: 'FETCH_INVENTORY_ALL'})
     console.log('OK GET')
   }
 
@@ -24,9 +24,19 @@ function Inventory() {
     setSearchInput(e.target.value);
   }
 
-  const handleSearchSubmit = (e) => {
+  const handleSearchSubmit = (e, filter) => {
     e.preventDefault();
-    dispatch({type: 'FETCH_INVENTORY_ALL', payload: searchInput})
+    if (filter === 'Name') {
+      dispatch({type: 'FETCH_SEARCH_NAME', payload: searchInput})
+    } else if (filter === 'Card ID') {
+
+    } else if (filter === 'Description') {
+
+    } else {
+      dispatch({ type: 'FETCH_INVENTORY_ALL'})
+      console.log(`No Filter applied, Mt. ggKaiba.`)
+    }
+    
   }
 
   useEffect(() => {
@@ -41,10 +51,9 @@ function Inventory() {
         <select onChange={e => handleFilterChange(e)}>
           <option>Name</option>
           <option>Card ID</option>
-          <option>frameType</option>
           <option>Description</option>
         </select>
-        <form onSubmit={e => handleSearchSubmit(e)}>
+        <form onSubmit={e => handleSearchSubmit(e, filter)}>
           <input type="text" onChange={e => handleInputChange(e)} placeholder="e.g. 'golden' or 'rule'" />
           <input type="submit" />
         </form>
