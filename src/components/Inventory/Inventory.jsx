@@ -1,20 +1,23 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import Box from '@mui/material/Box';
+import Grid from '@mui/material/Grid';
+import InventoryItem from './InventoryItem.jsx'
 
 function Inventory() {
   const dispatch = useDispatch();
   const inventoryAll = useSelector(store => store.invGetAll);
 
   const getCardInventory = () => {
-    dispatch({ type: 'FETCH_INVENTORY_ALL'})
+    dispatch({ type: 'FETCH_INVENTORY_ALL' })
     console.log('OK GET')
   }
 
   useEffect(() => {
     getCardInventory();
   }, [])
-  
+
   return (
     <div>
       <div>
@@ -24,18 +27,22 @@ function Inventory() {
           <input type="submit" />
         </form>
       </div>
-      <div>
+      <Box>
         Search Results:
-        {
-          inventoryAll.map(card => (
-            <div key={card.id}>
-              <b>{card.card_name}</b> || <i>{card.card_type}</i>
-              <br/>
-              Location: <b>{card.storage_location}</b> || Quantity: <b>{card.quantity}</b>
-            </div>
-          ))
-        }
-      </div>
+        <Grid container
+          spacing={{ xs: 1, md: 1 }}
+          columns={{ xs: 4, sm: 8, md: 12 }}
+        >
+
+          {
+            inventoryAll.map(card => (
+              <Grid item xs={2} sm={2} md={3} key={card.id}>
+                <InventoryItem card={card}/>
+              </Grid>
+            ))
+          }
+        </Grid>
+      </Box>
     </div>
   )
 }
