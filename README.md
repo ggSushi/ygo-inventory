@@ -3,6 +3,10 @@
 This app is intended to be a personal inventory database of all current Yu-Gi-Oh! TCG cards currently owned by the user and implements the use of <a href="https://ygoprodeck.com/api-guide/">YGOPRODeck's API</a>. 
 
 ### **_Current Status_**
+Searching through the API will show card results on the page with proper card colors and short descriptions of them on the card. Clicking into them will bring user into a more detailed card info page where you can store the card into the database with a quantity and location (locations are user-specific and must be adjusted to user's storage plan).
+
+Going to the Inventory tab will now display the cards currently in user's database; sorted alphabetically. Clicking on each card shows the id of that item in the console, and will eventually pull up that card's information in a separate component.
+-------
 Search through YGOPRODeck's API is functional, as well as storing cards into local database.
 
 ### **_Function_**
