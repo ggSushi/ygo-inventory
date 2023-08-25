@@ -56,7 +56,7 @@ const invGetAll = (state = [], action) => {
   }
 }
 
-const invGetCard = (state = [], action) => {
+const invCardInfo = (state = [], action) => {
   switch (action.type) {
     case 'SET_INVENTORY_CARD':
       return action.payload;
@@ -78,7 +78,7 @@ const rootReducer = combineReducers({
   quantity,
   location,
   invGetAll,
-  invGetCard,
+  invCardInfo,
 });
 
 export default rootReducer;

@@ -3,7 +3,7 @@ const inventoryRouter = express.Router();
 const pool = require('../modules/pool.js');
 
 // TODO GET Requests
-inventoryRouter.get('/getAll', (req,res) => {
+inventoryRouter.get('/getCards', (req,res) => {
   //! disabled code for more efficient display data -gd
   // const queryText = `SELECT * from "inventory";`;
   const queryText = `Select "id", "card_id", "card_name", "card_type", "storage_location", "quantity"
@@ -12,6 +12,17 @@ inventoryRouter.get('/getAll', (req,res) => {
     res.send(result.rows);
   }).catch((error) => {
     console.log(`Error in /getAll: ${error}`);
+    res.sendStatus(500);
+  })
+})
+
+inventoryRouter.get('/getCards/:id', (req,res) => {
+  const queryText = `Select "id", "card_id", "card_name", "card_type", "storage_location", "quantity"
+  from "inventory" where "card_id" = $1 order by "card_name" ASC;`;
+  pool.query(queryText, [req.params.id]).then((result) => {
+    res.send(result.rows);
+  }).catch((error) => {
+    console.log(`Error in /getCards: ${error}`);
     res.sendStatus(500);
   })
 })

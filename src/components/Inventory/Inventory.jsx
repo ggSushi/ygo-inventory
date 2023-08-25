@@ -8,10 +8,25 @@ import InventoryItem from './InventoryItem.jsx'
 function Inventory() {
   const dispatch = useDispatch();
   const inventoryAll = useSelector(store => store.invGetAll);
+  const [searchInput, setSearchInput] = useState('');
+  const [filter, setFilter] = useState('Name');
 
   const getCardInventory = () => {
-    dispatch({ type: 'FETCH_INVENTORY_ALL' })
+    dispatch({ type: 'FETCH_INVENTORY_ALL', payload: 'all' })
     console.log('OK GET')
+  }
+
+  const handleFilterChange = (e) => {
+    setFilter(e.target.value);
+  }
+
+  const handleInputChange = (e) => {
+    setSearchInput(e.target.value);
+  }
+
+  const handleSearchSubmit = (e) => {
+    e.preventDefault();
+    dispatch({type: 'FETCH_INVENTORY_ALL', payload: searchInput})
   }
 
   useEffect(() => {
@@ -21,14 +36,21 @@ function Inventory() {
   return (
     <div>
       <div>
-        Search Inventory database:
-        <form>
-          <input type="text" placeholder="e.g. 'golden' or 'rule'" />
+        Search Inventory database ||
+        Search by:
+        <select onChange={e => handleFilterChange(e)}>
+          <option>Name</option>
+          <option>Card ID</option>
+          <option>frameType</option>
+          <option>Description</option>
+        </select>
+        <form onSubmit={e => handleSearchSubmit(e)}>
+          <input type="text" onChange={e => handleInputChange(e)} placeholder="e.g. 'golden' or 'rule'" />
           <input type="submit" />
         </form>
       </div>
       <Box>
-        Search Results:
+        Search Results by {filter}:
         <Grid container
           spacing={{ xs: 1, md: 1 }}
           columns={{ xs: 4, sm: 8, md: 12 }}
