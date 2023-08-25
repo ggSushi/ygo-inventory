@@ -33,7 +33,6 @@ function Inventory() {
           spacing={{ xs: 1, md: 1 }}
           columns={{ xs: 4, sm: 8, md: 12 }}
         >
-
           {
             inventoryAll.map(card => (
               <Grid item xs={2} sm={2} md={3} key={card.id}>
