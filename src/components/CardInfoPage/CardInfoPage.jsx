@@ -14,6 +14,7 @@ function CardInfoPage() {
 
   const backToSearch = () => {
     dispatch({ type: 'RESET_QUANTITY' })
+    dispatch({ type: 'RESET_LOCATION' });
     history.push('/api-search')
   }
 
@@ -62,6 +63,7 @@ function CardInfoPage() {
       });
     }
     dispatch({ type: 'RESET_QUANTITY' });
+    dispatch({ type: 'RESET_LOCATION' });
     setNumbDisplay('');
   }
 
