@@ -59,12 +59,13 @@ function CardInfoPage() {
         console.log(`Added ${cardInfo.name} to inventory.`);
       }).catch((error) => {
         console.log(`Error in axios addToInv ${error}`);
-        alert(`Couldn't add card into inventory, Mr. ggKaiba.`);
+        alert(`Could not add card, Mr. ggKaiba.`);
       });
     }
     dispatch({ type: 'RESET_QUANTITY' });
     dispatch({ type: 'RESET_LOCATION' });
     setNumbDisplay('');
+    history.push('/api-search')
   }
 
   return (
