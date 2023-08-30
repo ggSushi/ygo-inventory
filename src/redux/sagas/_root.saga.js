@@ -12,6 +12,16 @@ function* fetchInventory() {
   }
 };
 
+function* fetchTotalQuantity() {
+  try {
+    const totalCards = yield axios.get('/inventory/totalCards');
+    yield put({type: 'SET_TOTAL_CARDS', payload: totalCards.data});
+  } catch (error) {
+    console.log(`Error in GET totalCards: ${error}`);
+    alert(`Can't pull total cards, Mr. ggKaiba`);
+  }
+};
+
 function* searchNameInv(action) {
   try {
     let name = action.payload
@@ -54,6 +64,8 @@ function* rootSaga() {
     yield takeLatest('FETCH_SEARCH_NAME', searchNameInv),
     yield takeLatest('FETCH_SEARCH_ID', searchIdInv),
     yield takeEvery('FETCH_SEARCH_DESCRIPTION', searchDescInv),
+    yield takeLatest('FETCH_TOTAL_CARDS', fetchTotalQuantity),
+    
   ]);
 }
 

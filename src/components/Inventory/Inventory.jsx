@@ -10,12 +10,19 @@ function Inventory() {
   const dispatch = useDispatch();
   const history = useHistory();
   const inventoryAll = useSelector(store => store.invGetAll);
+  const totalCards = useSelector(store => store.totalCards);
   const [searchInput, setSearchInput] = useState('');
   const [filter, setFilter] = useState('Name');
+
 
   const getCardInventory = () => {
     dispatch({ type: 'FETCH_INVENTORY_ALL'})
     console.log('OK GET')
+  }
+
+  const getTotalCards = () => {
+    dispatch({type: 'FETCH_TOTAL_CARDS'})
+    console.log(`OK GET TOTAL`)
   }
 
   const handleCardClick = (card) => {
@@ -57,11 +64,14 @@ function Inventory() {
 
   useEffect(() => {
     getCardInventory();
+    getTotalCards();
+    console.log(totalCards)
   }, [])
 
   return (
     <div>
       <div>
+        
         Search Inventory database ||
         Search by:
         <select onChange={e => handleFilterChange(e)}>

@@ -67,6 +67,15 @@ const invCardInfo = (state = [], action) => {
   }
 }
 
+const totalCards = (state = 0, action) => {
+  switch (action.type) {
+    case 'SET_TOTAL_CARDS':
+      return action.payload;
+    default:
+      return state;
+  }
+}
+
 
 const rootReducer = combineReducers({
   //* reducers go here.
@@ -79,6 +88,8 @@ const rootReducer = combineReducers({
   location,
   invGetAll,
   invCardInfo,
+  totalCards,
+
 });
 
 export default rootReducer;

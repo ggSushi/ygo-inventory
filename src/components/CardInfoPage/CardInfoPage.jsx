@@ -183,7 +183,7 @@ function CardInfoPage() {
             <option>Card Box S1</option>
             <option>Card Box S2</option>
             <option>Card Box T1</option>
-            <option>Card Box T2 (YGO Small Box)</option>
+            <option>Card Box T2</option>
             <option>Card Box M1 (Big Box)</option>
             <option>Card Storage E1</option>
             <option>Card Storage E2</option>
