@@ -62,6 +62,16 @@ inventoryRouter.get('/searchDesc/:input', (req,res) => {
   })
 })
 
+inventoryRouter.get('/databaseSearch/:id', (req, res) => {
+  const queryText = `Select * from "inventory" where id = $1;`;
+  pool.query(queryText, [req.params.id]).then((result) => {
+    res.send(result.rows);
+  }).catch((error) => {
+    console.log(`Error in databaseSearch ${error}`);
+    res.sendStatus(500);
+  })
+})
+
 // TODO POST Requests
 inventoryRouter.post('/addToInv', (req, res) => {
   console.log(`POST to Inventory`);

@@ -59,6 +59,9 @@ function Inventory() {
       dispatch({ type: 'FETCH_INVENTORY_ALL'})
       console.log(`No Filter applied, Mt. ggKaiba.`)
     }
+  }
+
+  const handleCardIdClick = () => {
     
   }
 
